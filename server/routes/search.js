@@ -3,7 +3,7 @@ import axios from "axios";
 
 const router = express.Router();
 const cache = new Map();
-const CACHE_TTL = 1000 * 60 * 10;
+const CACHE_TTL = 1000 * 60 * 15;
 
 router.post("/", async (req, res) => {
   const { origin, destination, date } = req.body;
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
 
   try {
     const sites = [
-      { name: "Kiwi", url: "https://www.kiwi.com" },
+      { name: "Clear Trip", url: "https://www.cleartrip.com/flights" },
       
       { name: "IndiGo", url: "https://www.goindigo.in" },
       
@@ -51,8 +51,8 @@ router.post("/", async (req, res) => {
               Use the official booking form.
               If required, select 1 adult and economy class.
               Wait for results to fully load.
-              Extract airline, departure_time, arrival_time, and price.
-              Ignore ads and sponsored listings.
+              Extract airline, departure_time, arrival_time, price, and booking_url.
+              Ignore advertisements, sponsored results, and promotional banners.
               Return structured JSON array only.
             `,
             proxy_config: { enabled: true }
@@ -106,7 +106,8 @@ router.post("/", async (req, res) => {
               departure_time: flight.departure_time || "N/A",
               arrival_time: flight.arrival_time || "N/A",
               price: priceNumber,
-              source: site.name
+              source: site.name,
+              booking_url: flight.booking_url || site.url
             };
           })
           .filter(f => !isNaN(f.price) && f.price > 0);

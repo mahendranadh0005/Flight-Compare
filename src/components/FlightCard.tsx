@@ -79,6 +79,15 @@ const FlightCard = ({ flight, isCheapest }: FlightCardProps) => {
             {flight.arrival_time}
           </p>
         </div>
+        <button
+            onClick={() => window.open(flight.booking_url, "_blank")}
+            className="mt-4 w-full rounded-lg bg-primary py-2 text-white"
+          >
+            Book Now
+          </button>
+
+
+
       </div>
     </div>
   );

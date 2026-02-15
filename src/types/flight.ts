@@ -4,6 +4,7 @@ export interface Flight {
   arrival_time: string;
   price: number;
   source: string;
+  booking_url?: string;
 }
 
 export interface SearchParams {

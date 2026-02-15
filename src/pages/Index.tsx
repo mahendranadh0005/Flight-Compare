@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Plane, AlertCircle, Sparkles } from "lucide-react";
 import SearchForm from "@/components/SearchForm";
 import FlightResults from "@/components/FlightResults";
+import airportImage from "@/airport.jpg";
 
 import type { Flight, SearchParams } from "@/types/flight";
 
@@ -71,7 +72,7 @@ const Index = () => {
       <section className="relative">
         <div className="h-[500px] w-full overflow-hidden">
           <img
-            src="src/airport.jpg"   
+            src={airportImage}
             alt="Airport runway with airplane"
             className="h-full w-full object-cover"
           />
