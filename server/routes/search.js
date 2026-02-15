@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
 
   try {
     const sites = [
-      { name: "Clear Trip", url: "https://www.cleartrip.com/flights" },
+      { name: "Spice Jet", url: "https://www.spicejet.com/" },
       
       { name: "IndiGo", url: "https://www.goindigo.in" },
       
